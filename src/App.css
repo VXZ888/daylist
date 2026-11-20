@@ -1,0 +1,694 @@
+
+/* Основная структура */
+
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f5f6fa;
+}
+
+.topbar {
+    width: min(1200px, calc(100% - 64px));
+    margin: 0 auto;
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e7e9f0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 23px;
+    font-weight: 800;
+    color: #252b3b;
+}
+
+.brand-symbol {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: #6558d3;
+    border-radius: 11px;
+}
+
+.topbar-caption {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #969bad;
+}
+
+/* Основная область */
+
+.main-content {
+    width: min(1200px, calc(100% - 64px));
+    margin: 0 auto;
+    flex: 1;
+}
+
+/* Приветственная секция */
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 65px 0 55px;
+}
+
+.hero-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #6558d3;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.hero-label span {
+    width: 8px;
+    height: 8px;
+    background: #6558d3;
+    border-radius: 50%;
+}
+
+.hero h1 {
+    margin: 20px 0 15px;
+    font-size: clamp(35px, 5vw, 53px);
+    line-height: 1.15;
+    letter-spacing: -1.8px;
+}
+
+.hero h1 span {
+    color: #6558d3;
+}
+
+.hero-description {
+    max-width: 590px;
+    color: #858b9d;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.date-card {
+    min-width: 190px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border: 1px solid #e9eaf1;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(40, 44, 70, 0.04);
+}
+
+.date-number {
+    color: #6558d3;
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.date-month {
+    margin-top: 2px;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.date-caption {
+    margin-top: 14px;
+    color: #a1a5b3;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Рабочая область */
+
+.workspace {
+    display: grid;
+    grid-template-columns: 330px minmax(0, 1fr);
+    gap: 30px;
+    align-items: start;
+    padding-bottom: 55px;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Форма добавления задачи */
+
+.task-form {
+    padding: 25px;
+    background: white;
+    border: 1px solid #e9eaf1;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(40, 44, 70, 0.04);
+}
+
+.form-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 27px;
+}
+
+.form-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    background: #eeeaff;
+    color: #6558d3;
+    border-radius: 12px;
+    font-size: 28px;
+}
+
+.form-heading h2 {
+    margin: 0 0 5px;
+    font-size: 17px;
+}
+
+.form-heading p {
+    margin: 0;
+    color: #999eae;
+    font-size: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.optional {
+    color: #a4a8b5;
+    font-weight: 400;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    color: #30364a;
+    background: #f8f8fb;
+    border: 1px solid #e9eaf0;
+    border-radius: 10px;
+    outline: none;
+    font-size: 13px;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #8175e0;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #b3b6c2;
+}
+
+.add-button {
+    width: 100%;
+    padding: 14px;
+    color: white;
+    background: #6558d3;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.add-button:hover {
+    background: #5144bd;
+    transform: translateY(-2px);
+}
+
+.add-button span {
+    margin-right: 5px;
+    font-size: 17px;
+}
+
+/* Информационный блок */
+
+.tip-card {
+    padding: 23px;
+    background: #eeecff;
+    border-radius: 16px;
+}
+
+.tip-icon {
+    color: #6558d3;
+    font-size: 24px;
+}
+
+.tip-card h3 {
+    margin: 12px 0 8px;
+    font-size: 15px;
+}
+
+.tip-card p {
+    margin: 0;
+    color: #777491;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Список задач */
+
+.tasks-section {
+    min-width: 0;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.section-label {
+    margin: 0 0 9px;
+    color: #989daf;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-size: 23px;
+}
+
+.task-count {
+    min-width: 27px;
+    height: 27px;
+    display: grid;
+    place-items: center;
+    color: #6558d3;
+    background: #e9e6ff;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* Сетка карточек — CSS Grid */
+
+.tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 17px;
+}
+
+/* Отдельная карточка */
+
+.task-card {
+    min-width: 0;
+    min-height: 215px;
+    padding: 21px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid #e9eaf1;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(40, 44, 70, 0.035);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(40, 44, 70, 0.08);
+}
+
+.task-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.task-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #399b79;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #49b68c;
+    border-radius: 50%;
+}
+
+.task-date {
+    color: #a3a7b4;
+    font-size: 11px;
+}
+
+.task-card h3 {
+    margin: 22px 0 10px;
+    font-size: 16px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.task-description {
+    margin: 0 0 20px;
+    color: #9196a6;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.task-card-footer {
+    margin-top: auto;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #f0f0f4;
+}
+
+.task-category {
+    padding: 6px 9px;
+    color: #7770c8;
+    background: #f0eeff;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.delete-button {
+    padding: 5px 0;
+    color: #a0a3af;
+    background: none;
+    border: none;
+    font-size: 11px;
+    transition: color 0.2s;
+}
+
+.delete-button:hover {
+    color: #dc5555;
+}
+
+.delete-button span {
+    margin-left: 3px;
+    font-size: 16px;
+}
+
+/* Пустой список */
+
+.empty-state {
+    padding: 55px 20px;
+    background: white;
+    border: 1px dashed #d9d9e8;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.empty-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    color: #6558d3;
+    background: #eeecff;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.empty-state h3 {
+    margin: 15px 0 8px;
+    font-size: 16px;
+}
+
+.empty-state p {
+    max-width: 300px;
+    margin: 0 auto;
+    color: #999eae;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Нижняя часть страницы */
+
+.footer {
+    width: min(1200px, calc(100% - 64px));
+    margin: 0 auto;
+    padding: 23px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid #e7e9f0;
+    color: #a1a5b3;
+    font-size: 11px;
+}
+
+/* Планшеты */
+
+@media (max-width: 1000px) {
+    .workspace {
+        grid-template-columns: 285px minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    .tasks-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .task-form {
+        padding: 20px;
+    }
+}
+
+/* Небольшие экраны */
+
+@media (max-width: 760px) {
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .form-column {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(200px, 0.8fr);
+        align-items: stretch;
+    }
+
+    .hero {
+        padding: 45px 0;
+    }
+
+    .date-card {
+        min-width: 155px;
+        padding: 18px;
+    }
+}
+
+/* Мобильные устройства */
+
+@media (max-width: 560px) {
+    .topbar,
+    .main-content,
+    .footer {
+        width: calc(100% - 36px);
+    }
+
+    .topbar {
+        padding: 18px 0;
+    }
+
+    .topbar-caption {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        padding: 38px 0;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .date-card {
+        min-width: 0;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .date-number {
+        font-size: 32px;
+    }
+
+    .date-caption {
+        margin: 0;
+    }
+
+    .form-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tasks-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .task-card {
+        min-height: 190px;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.task-status.completed {
+    color: #6558d3;
+}
+
+.task-status.completed .status-dot {
+    background: #6558d3;
+}
+
+.task-card-completed h3 {
+    color: #858a9b;
+    text-decoration: line-through;
+}
+
+.task-card-completed .task-description {
+    opacity: 0.65;
+}
+
+/* Кнопки управления задачей */
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.complete-button {
+    padding: 5px 8px;
+    color: #6558d3;
+    background: #eeecff;
+    border: none;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+.complete-button:hover {
+    background: #dedaff;
+}
+
+/* Сообщения об ошибках сервера */
+
+.api-error {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    color: #b84040;
+    background: #fff0f0;
+    border: 1px solid #f2d0d0;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Адаптация кнопок на небольших экранах */
+
+@media (max-width: 400px) {
+    .task-card-footer {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .task-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+
+.user-panel {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.username {
+    color: #6558d3;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.logout-button {
+    padding: 9px 15px;
+    color: #6558d3;
+    background: #eeecff;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+.logout-button:hover {
+    background: #dedaff;
+}
+
+@media (max-width: 560px) {
+    .user-panel {
+        gap: 8px;
+    }
+
+    .username {
+        max-width: 95px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .logout-button {
+        padding: 8px 10px;
+    }
+}
