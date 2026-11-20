@@ -7,6 +7,9 @@ import TaskList from "./components/TaskList";
 
 import "./App.css";
 
+// Адрес опубликованного Backend
+const API_URL = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
+
 function App() {
     const [username, setUsername] = useState(
         () => localStorage.getItem("daylist_username") || ""
@@ -35,20 +38,21 @@ function App() {
             setError("");
 
             try {
-                const response = await fetch("/api/tasks", {
+                const response = await fetch(`${API_URL}/api/tasks`, {
+                    method: "GET",
                     headers: getHeaders()
                 });
 
                 const data = await response.json();
 
                 if (!response.ok) {
-                    throw new Error(data.error || "Ошибка загрузки.");
+                    throw new Error(data.error || "Ошибка загрузки задач.");
                 }
 
                 setTasks(data);
 
             } catch (err) {
-                setError(err.message);
+                setError(err.message || "Не удалось подключиться к серверу.");
             } finally {
                 setLoading(false);
             }
@@ -77,7 +81,7 @@ function App() {
         try {
             setError("");
 
-            const response = await fetch("/api/tasks", {
+            const response = await fetch(`${API_URL}/api/tasks`, {
                 method: "POST",
                 headers: getHeaders(),
                 body: JSON.stringify({
@@ -89,7 +93,7 @@ function App() {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.error || "Ошибка добавления.");
+                throw new Error(data.error || "Ошибка добавления задачи.");
             }
 
             setTasks((current) => [data, ...current]);
@@ -97,7 +101,7 @@ function App() {
             return true;
 
         } catch (err) {
-            setError(err.message);
+            setError(err.message || "Не удалось добавить задачу.");
             return false;
         }
     };
@@ -107,7 +111,7 @@ function App() {
         try {
             setError("");
 
-            const response = await fetch(`/api/tasks/${id}`, {
+            const response = await fetch(`${API_URL}/api/tasks/${id}`, {
                 method: "DELETE",
                 headers: getHeaders()
             });
@@ -115,7 +119,7 @@ function App() {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.error || "Ошибка удаления.");
+                throw new Error(data.error || "Ошибка удаления задачи.");
             }
 
             setTasks((current) =>
@@ -123,16 +127,16 @@ function App() {
             );
 
         } catch (err) {
-            setError(err.message);
+            setError(err.message || "Не удалось удалить задачу.");
         }
     };
 
-    // Изменение статуса
+    // Изменение статуса задачи
     const handleToggleTask = async (task) => {
         try {
             setError("");
 
-            const response = await fetch(`/api/tasks/${task.id}`, {
+            const response = await fetch(`${API_URL}/api/tasks/${task.id}`, {
                 method: "PUT",
                 headers: getHeaders(),
                 body: JSON.stringify({
@@ -143,7 +147,7 @@ function App() {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.error || "Ошибка обновления.");
+                throw new Error(data.error || "Ошибка обновления задачи.");
             }
 
             setTasks((current) =>
@@ -153,7 +157,7 @@ function App() {
             );
 
         } catch (err) {
-            setError(err.message);
+            setError(err.message || "Не удалось обновить задачу.");
         }
     };
 
