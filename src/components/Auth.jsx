@@ -1,6 +1,9 @@
 
 import { useState } from "react";
 
+// Адрес опубликованного Backend на Render
+const API_URL = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
+
 function Auth({ onLogin }) {
     const [username, setUsername] = useState("");
     const [mode, setMode] = useState("login");
@@ -18,7 +21,7 @@ function Auth({ onLogin }) {
                 ? "/api/login"
                 : "/api/register";
 
-            const response = await fetch(endpoint, {
+            const response = await fetch(`${API_URL}${endpoint}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
