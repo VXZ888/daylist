@@ -19,6 +19,11 @@ const pool = new Pool({
 app.use(cors());
 app.use(express.json());
 
+// Главная страница API
+app.get("/", (req, res) => {
+    res.send("Daylist API is running!");
+});
+
 // Создание таблиц при запуске сервера
 async function initializeDatabase() {
     await pool.query(`
